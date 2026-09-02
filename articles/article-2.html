@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Virtual Environments</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+<article class="container article-content">
+    <h1>Python Virtual Environments</h1>
+    <h2>Why do you need a virtual environment for python?</h2>
+
+    <p>
+        A virtual environment is a self-contained directory that contains a Python installation for a particular version of Python, plus a number of additional packages. It allows you to manage dependencies for different projects separately, avoiding conflicts between them. This is especially important when working on multiple projects that may require different versions of the same package.
+    </p>
+    <h3>Why You Need It</h3>
+    <ul>
+        <li><strong>Stops Version Fights:</strong> Different projects might need different versions of the same tool. One project might need an old version, while a new project needs a recent update.</li>
+        <li><strong>Keeps Your Computer Clean:</strong> Installing every tool globally clutters your main Python installation and risks breaking your operating system's internal scripts.</li>
+        <li><strong>Makes Sharing Easy:</strong> You can export an exact list of your project tools into a text file. Other people can then recreate your exact setup on their computers.</li>
+        <li><strong>Safe Testing:</strong> You can test new or experimental packages without changing your main setup, and delete the environment safely if you do not like them.</li>
+    </ul>
+    <h3>How It Works</h3>
+    <ul>
+        <li><strong>A Separate Folder:</strong> A virtual environment creates a small folder inside your project directory that holds its own copy of Python and its own library folder.</li>
+        <li><strong>Activation:</strong> You run a simple command in your terminal to turn the environment on before you start working.</li>
+        <li><strong>Isolation:</strong> Any package you install while the environment is active stays inside that specific folder and does not affect the rest of your computer.</li>
+    </ul>
+    <h3>what does pip3 install do in terms of virtual environment?</h3>
+    <p>Pip3 install does not directly install the package inside a virtual environment. Instead, it installs the package into the global site-packages directory on your Mac. This means that if you have multiple versions of Python installed on your Mac, pip3 will install the package in the version that is currently active.</p>
+<p>When you run pip3 install, its behavior depends entirely on whether your virtual environment is active or inactive in your terminal.</p>
+    
+    
+    <h3>If the Environment is Active (Turned On)</h3>
+    
+    <p>If the environment is active, pip3 will install the package into the virtual environment's private folder. This means that the package will only be available in the project you are currently working on.</p>
+</p><code>pip3 install [package-name]</code> Installs inside the virtual environment: The package goes into your virtual environment's private folder. 
+<ul><li><strong>Keeps system clean:</strong> It does not touch your Mac's global Python installation.</li><li><strong>Uses env's pip:</strong> The terminal automatically routes the pip3 command to use the package manager bundled inside your virtual environment.</li>  </ul>
+    
+    
+    <h3>If the Environment is Inactive (Turned Off)</h3> 
+    <p>If the environment is inactive, <code>pip3 install [package-name]</code> will install the package into your Mac's global Python installation. This means that the package will be available to all projects on your computer, but it may also cause conflicts with other packages or versions.</p>
+
+   
+
+   <h3>How to Check Before Installing</h3>
+   <p>Before you run pip3 install, look at your terminal prompt. If a virtual environment is active, you will see its name in parentheses at the very beginning of the line:
+    <ul>
+        <li>🟢 Active (Safe): (myenv) user@MacBook ~ %</li>
+        <li>🔴 Inactive (Global): user@MacBook ~ %</li>
+    </ul>
+    You can also run which pip3. If it points to your project folder, it is safe to install. If it points to /usr/local/bin/ or /opt/homebrew/, it will install globally.</p>
+
+</article>
+<footer>
+            <span >Isabelle Bidou - copyright <script>document.write(new Date().getFullYear())</script></span>
+</footer>
+
+</body>
+</html>

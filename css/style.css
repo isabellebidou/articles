@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background: rgb(236, 204, 204);
+    color: #333;
+}
+code {
+    background: #bbbaba;
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+pre {
+    background: #f4f4f4;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #8a2121;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+header {
+    background: #8a2121;
+    color: white;
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+title{
+    color: rgb(29, 126, 96);
+}
+
+ h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: rgb(29, 126, 96);
+}
+
+
+.btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background: #0078d7;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.article-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    margin: 40px 0;
+}
+
+.article-card {
+    background: rgb(242, 237, 237);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(0,0,0,.1);
+}
+
+.article-card h2 {
+    margin-bottom: 10px;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #0078d7;
+    font-weight: bold;
+}
+
+.article-content {
+    background: rgb(242, 237, 237);
+    margin-top: 40px;
+    padding: 40px;
+    border-radius: 10px;
+}
+.lion-image{
+    display: block;
+    margin: 20px auto;
+    max-width: 50%;
+}
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: white;
+}

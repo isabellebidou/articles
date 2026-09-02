@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starting a project in Python vs Starting a project in JavaScript</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Starting a project in Python vs Starting a project in JavaScript</h1>
+        <h2>Exploring the boiler plate and setup differences between JavaScript and Python projects.</h2>
+
+        <p>
+            Starting a JavaScript project versus a Python project involves completely different workflows, ecosystems,
+            and environments.The primary difference is where the code runs: JavaScript is built natively for the web
+            browser, while Python is designed to run directly on your computer's operating system. The syntax and
+            libraries used are also different, with JavaScript being more commonly used for web development while Python
+            is more popular in data science and machine learning applications.
+        </p>
+        <h2>Project Initialization & Setup</h2>
+        <table>
+            <tr>
+                <th>Aspect</th>
+                <th>JavaScript</th>
+                <th>Python</th>
+            </tr>
+            <tr>
+                <td>Runtime Environment</td>
+                <td>Web Browser</td>
+                <td>Operating System</td>
+            </tr>
+            <tr>
+                <td>Primary Use Case</td>
+                <td>Web Development</td>
+                <td>Data Science, Machine Learning</td>
+            </tr>
+            <tr>
+                <td>Package Manager</td>
+                <td>npm (Node Package Manager)</td>
+                <td>pip (Python Package Index)</td>
+            </tr>
+            <tr>
+                <td>Development Environment</td>
+                <td>Code Editor, Browser</td>
+                <td>Code Editor, Terminal</td>
+            </tr>
+            <tr>
+                <td>Project Initialization & Setup</td>
+                <td>
+                    <ul>
+                        <li>Requires a package manager like npm, yarn, or pnpm</li>
+                        <li>Initialized via the terminal command npm init.</li>
+                        <li>Generates a package.json file to track metadata and dependencies</li>
+                        <li>Often requires an index.html file to script browser actions</li>
+                    </ul>
+                </td>
+
+                <td>
+                    <ul>
+                        <li>Does not require strict initialization or meta-files to get started.</li>
+                        <li>Simply requires creating a file with a .py extension (e.g., main.py).</li>
+                        <li>Dependencies are manually tracked using a simple requirements.txt file</li>
+                        <li>Modern workflows may use tools like poetry or pipenv for structured initialization.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Environment & Dependency Management</td>
+                <td>
+                    <ul>
+                        <li>Uses a local folder called node_modules generated directly inside your project directory.</li>
+                        <li>Dependencies are downloaded locally to that specific folder by default</li>
+                        <li>No explicit virtual environment activations are required.</li>
+                    
+                    </ul>
+                </td>
+
+                <td>
+                    <ul>
+                        <li>Requires setting up an isolated virtual environment (python -m venv venv) to avoid messing up system-wide packages.</li>
+                        <li>You must actively "activate" the environment in your terminal before running or installing tools.</li>
+                        <li>Packages are installed within the hidden virtual environment directory, not a generic local folder.</li>
+                    </ul>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Runtime Environment & Tooling</td>
+                <td>
+                    <ul>
+                        <li>Runs directly in any web browser console (Chrome, Firefox) for instant visual feedback.</li>
+                        <li>Requires Node.js, Deno, or Bun if you want to execute it outside a browser (like a backend server)</li>
+                        <li>Modern projects often require compiler/build tooling (like Vite, Webpack, or Babel) if using TypeScript or modern frameworks</li>
+                    
+                    </ul>
+                </td>
+
+                <td>
+                    <ul>
+                        <li>Runs directly on your computer's CPU via the command line (python main.py) right after installation</li>
+                        <li>Operates completely behind the scenes without needing a graphical interface or browser.</li>
+                        <li>Rarely requires an explicit "build" or compilation step unless deploying specific packages.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+<h2>The Best Order for a Python Project</h2>
+<ol>
+<li><code>mkdir [projectName] </code> ()</code> (Create the project directory)</li>
+   <li><code>cd [projectName] </code> (Change to the project directory)</li>
+   <li><code>python3 -m venv .venv</code> (Create the virtual environment)</li>
+   <li><code>code .</code> (Open in VS Code NOW)</li>
+   <li><code>touch main.py requirements.txt README.md</code> (Create boilerplate)</li>
+<li><code>source .venv/bin/activate</code> (Activate environment)</li>
+</ol>
+
+<h2>The VS Code Trick </h2> 
+<p>you open VS Code immediately after creating the .venv folder, VS Code's Python extension will automatically notice the environment.It will pop up a small notification in the bottom right corner asking: "We noticed a new virtual environment. Would you like to select it for the workspace?"If you click Yes:VS Code will configure itself to use that environment automatically.Every time you open a new integrated terminal inside VS Code, it will automatically run source .venv/bin/activate for you. You won't have to type it manually anymore.</p>
+
+<h2>Manual setup</h2>
+<p>If you miss the popup, you can manually point VS Code to your environment in two seconds:Open a Python file (like app.py).Look at the bottom right corner of the VS Code window status bar. You will see the Python version (e.g., 3.11.x).Click on that version number.A menu will drop down at the top of the screen. Select the option that says .venv (venv).Once selected, VS Code handles the activation in the background every time you open the editor workspace.</p>
+   
+<h2>Flask</h2>
+
+<p>If you know Express.js from the Node.js world, Flask is exactly the same thing. Out of the box, it does not include database systems, form validation, or authentication. It gives you the bare minimum tools to route incoming web requests, parse JSON data, and return HTTP responses.</p>
+
+<pre>
+//app.py
+    
+from flask import Flask, jsonify
+
+# 1. Initialize the Flask application
+app = Flask(__name__)
+
+# 2. Define a basic route (Like app.get() in Express)
+@app.route("/api/hello", methods=["GET"])
+def hello_world():
+    # Returns a JSON response (Like res.json() in Express)
+    return jsonify({
+        "message": "Hello from the Python Flask backend!",
+        "status": "success"
+    })
+
+# 3. Start the local server
+if __name__ == "__main__":
+    # Runs the app on http://127.0.0
+    # debug=True automatically restarts the server when you change files (like nodemon)
+    app.run(port=5000, debug=True)
+</pre>
+
+<h2>How to Run It</h2>
+<p>Make sure your virtual environment is active in your VS Code terminal ((.venv) should be visible).
+    <ol>
+        <li>Install Flask inside your environment:<code>pip install flask</code></li>
+        <li>Run your application script:python app.py</li>
+    </ol>
+</p>
+
+<h2>CORS package and why you need it</h2>
+
+<p>If you try to fetch this data from your React app right now, your browser will block it.
+    Remember fighting the cors error in your React app? Well this package is used to solve this problem, right before you even have to thin about it!</p>
+<ol>
+    <li>Make sure your virtual environment is active in your terminal, then run. To install it, run this command: <code>pip install flask-cors</code></li>
+<li>in app.py Import the package and wrap your app with it. Here is your updated boilerplate code:
+    <pre>from flask import Flask, jsonify
+from flask_cors import CORS  # 1. Import CORS
+
+app = Flask(__name__)
+CORS(app)  # 2. Allow all origins (Like app.use(cors()) in Express)
+
+# Alternatively, restrict it to just your React app port:
+# CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+
+@app.route("/api/hello", methods=["GET"])
+def hello_world():
+    return jsonify({
+        "message": "Hello from the Python Flask backend!",
+        "status": "success"
+    })
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
+</pre>
+</li></ol>
+
+<h2>How to fetch it in React</h2>
+
+<pre>
+    // Inside a React component useEffect or event handler
+const response = await fetch('http://127.0.0');
+const data = await response.json();
+console.log(data.message); // "Hello from the Python Flask backend!"
+
+</pre>
+
+<h2> Save installed packages to a requirements.txt file</h2>
+
+<strong>make sure your virtual environment is active (.venv) in your terminal, then run this command:</strong>
+<pre>
+    pip freeze > requirements.txt
+</pre>
+
+<h2>How to install all the packages from a requirements.txt file</h2>
+
+<strong>This is the equivalent of <code>npm install</code>. Make sure your virtual environment is active (.venv) in your terminal, then run this command:</strong>
+<pre>
+    pip install -r requirements.txt
+</pre>
+
+<h2>The React Project Workflow in Order</h2>
+<ol>
+    <li><code>mkdir [projectName]</code> (Create your project root folder)</li>
+    <li><code>cd [projectName]</code> (Change directory into it)</li>
+    <li><code>npm create vite@latest . -- --template react</code>
+             => What this does: This command creates a new React project with Vite as the build tool. It also sets up a basic configuration for VS Code to work with it.</li>
+        <li><code>code .</code> (Open the folder in VS Code now)</li>
+        <li><code>npm install</code> (Run this inside your VS Code terminal)    => What this does: This reads the newly created package.json file and downloads the core React packages into a local node_modules folder.</li>
+        <li><code>npm run dev</code> (Start your local frontend development server)</li>
+</ol>
+    </article>
+    <footer>
+            <span >Isabelle Bidou - copyright <script>document.write(new Date().getFullYear())</script></span>
+</footer>
+
+</body>
+
+</html>
