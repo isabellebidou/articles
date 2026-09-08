@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Structures in Python vs JavaScript</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Data Structures</h1>
+        <h2>Comparing the data structure differences between Python and JavaScript</h2>
+ <table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Arrays / Lists</td>
+            <td>
+                <pre><code>const arr = ["a", "b", "c"];
+
+console.log(arr[10]); // undefined
+arr.push("d");        // adds "d" to the end</code></pre>
+            </td>
+            <td>
+                <pre><code>lst = ["a", "b", "c"]
+
+print(lst[10])    # IndexError
+lst.append("d")   # adds "d" to the end</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Slicing</td>
+            <td>
+                <pre><code>const lst = [0, 1, 2, 3, 4, 5];
+
+console.log(lst.slice(2, 5));
+// [2, 3, 4]</code></pre>
+            </td>
+            <td>
+                <pre><code>lst = [0, 1, 2, 3, 4, 5]
+
+print(lst[2:5])
+# [2, 3, 4]</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>indexOf / includes</td>
+            <td>
+                <pre><code>const lst = [0, 1, 2, 3, 4, 5];
+
+console.log(lst.indexOf(3));  // 3
+console.log(lst.includes(3)); // true</code></pre>
+            </td>
+            <td>
+                <pre><code>lst = [0, 1, 2, 3, 4, 5]
+
+print(lst.index(3))  # 3
+print(3 in lst)      # True</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Negative Indexing</td>
+            <td>
+                <pre><code>const lst = [0, 1, 2, 3, 4, 5];
+
+console.log(lst.at(-1)); // 5</code></pre>
+            </td>
+            <td>
+                <pre><code>lst = [0, 1, 2, 3, 4, 5]
+
+print(lst[-1])  # 5</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Copy (Spread Operator)</td>
+            <td>
+                <pre><code>const lst = [0, 1, 2, 3, 4, 5];
+
+const copy1 = [...lst];
+
+console.log(copy1 === lst); // false
+console.log(copy1);
+// [0, 1, 2, 3, 4, 5]</code></pre>
+            </td>
+            <td>
+                <pre><code>nums = [0, 1, 2, 3, 4, 5]
+
+copy1 = [*nums]
+
+print(copy1 is nums)  # False
+print(copy1)
+# [0, 1, 2, 3, 4, 5]</code></pre>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>dictionaries - objects</td>
+            <td>
+                <pre><code>const obj = { a: 1, b: 2, c: 3 };
+
+console.log(obj.a);   // 1
+obj.d = 4;           // adds new property
+delete obj.b;        // removes property</code></pre>
+console.log(obj.e); // undefined (missing key -> undefined)
+console.log(obj["a"]); // 1  (dot or bracket access)
+            </td>
+            <td>
+                <pre><code>obj = { "a": 1, "b": 2, "c": 3 }
+
+print(obj["a"]) # 1
+obj["d"] = 4 # adds new property
+del obj["b"] # removes property
+# print(obj["z"]) # KeyError: 'z'  
+# (missing key raises, not undefined)
+print(obj["a"]) # 1   — always brackets, no dot access
+print(obj.get("z", "hello")) # 'hello' — avoids KeyError
+</code></pre>
+            </td>
+        </tr>  
+        
+        <tr>
+            <td>entries - items</td>
+            <td>
+                <pre><code>for (const [key, val] of Object.entries(dict)) {
+  console.log(key, val);
+}</code></pre>
+
+            </td>
+            <td>
+                <pre><code>for key, val in d.items():
+    print(key, val)</code></pre>
+            </td>
+        </tr>  
+
+        <tr>
+            <td>Tuples - (immutable — Python-specific)</td>
+            <td>
+           </td>
+            <td>
+                <pre><code>tup = (1, 2, 3)
+print(tup[1])    # 2
+# tup[0] = 5 # TypeError: 
+#'tuple' object does not support item assignment
+
+# GOTCHA: a trailing comma makes a tuple 
+#(often a typo!)
+a = 1
+print(type(a)) # class 'int'
+a = 1,
+print(type(a)) # class 'tuple'</code></pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>

@@ -15,6 +15,7 @@ code {
     padding: 2px 4px;
     border-radius: 4px;
     font-family: monospace;
+    overflow-x: auto;
 }
 pre {
     background: #f4f4f4;
@@ -30,6 +31,7 @@ table {
 }
 table, th, td {
     border: 1px solid #ddd;
+    overflow-x: auto;
 }
 th, td {
     padding: 8px;
@@ -47,6 +49,7 @@ tr:nth-child(even) {
     width: 90%;
     max-width: 1100px;
     margin: auto;
+    overflow-x: scroll;
 }
 
 header {
