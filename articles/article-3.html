@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Syntax vs JavaScript Syntax</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Python Syntax vs JavaScript Syntax</h1>
+        <h2>Comparing the syntax differences between Python and JavaScript</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Variable Declaration</td>
+            <td>
+                <code>let x = 10;</code>
+                <pre><code>// Variables & assignment
+let count = 0;
+const user = "Bob";
+var temp = undefined; // Python -> None
+const PI = 3.14159;</code></pre>
+            </td>
+            <td>
+                <code>x = 10</code>
+                <pre><code># Variables & assignment
+count = 0
+user = "Bob"
+temp = None
+PI = 3.14159</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Comments</td>
+            <td>
+                <pre><code>// This is a comment
+
+/* This is a multi-line comment */</code></pre>
+            </td>
+            <td>
+                <pre><code># This is a comment</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Boolean</td>
+            <td><code>let flag = true;</code></td>
+            <td><code>flag = True</code> (case-sensitive)</td>
+        </tr>
+
+        <tr>
+            <td>Types</td>
+            <td><code>typeof(x)</code></td>
+            <td>
+                <code>type(x)</code>
+                <pre><code>print(type(10))        # <class 'int'>
+print(type(3.14))      # <class 'float'>
+print(type("Hello"))   # <class 'str'>
+print(type(True))      # <class 'bool'>
+print(type([]))        # <class 'list'></code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Type Coercion</td>
+            <td>
+                <p>
+                    JavaScript automatically performs type coercion.
+                </p>
+                <pre><code>console.log("5" + 3);      // "53"
+console.log(true + 1);     // 2
+console.log(0 == false);   // true</code></pre>
+            </td>
+            <td>
+                <p>
+                    Python requires explicit conversion for most types.
+                </p>
+                <pre><code>print("5" + 3)       # TypeError
+print("5" + str(3))  # "53"
+print(True + 1)      # 2
+print(0 == False)    # True
+print(int("42"))     # 42
+print(float("42"))   # 42.0</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>String Literals</td>
+            <td>
+                <pre><code>const name = "Alice";
+const age = 30;
+
+console.log(`Hello ${name}, you are ${age}!`);</code></pre>
+            </td>
+            <td>
+                <pre><code>name, age = "Alice", 30
+
+greeting = f"Hello {name}, you are {age}!"
+print(greeting)</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Slice</td>
+            <td>
+                <pre><code>const s = "sketch";
+
+console.log(s.slice(0, 3)); // "ske"
+console.log(s.slice(1, 4)); // "ket"
+console.log(s.slice(-2));   // "ch"</code></pre>
+            </td>
+            <td>
+                <pre><code>s = "sketch"
+
+print(s[0:3])   # "ske"
+print(s[1:4])   # "ket"
+print(s[-2:])   # "ch"</code></pre>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Upper case</td>
+            <td><code>console.log("hello".toUpperCase());// 'HELLO'</code></td>
+            <td><code>print("hello".upper())# 'HELLO'</code></td>
+        </tr>
+
+        <tr>
+            <td>Replace</td>
+            <td><code>console.log("hello".replace("l", "L"));// 'heLlo'</code> replaces first ONLY the first occurrence</td>
+            <td><code>print("hello".replace("l", "L"))# 'heLLo'</code> replaces all occurrences<br></br>
+                <code>print("hello".replace("l", "L", 1))# 'heLLo'</code> replaces only the first occurrence
+            </td>
+        </tr>
+
+        <tr>
+            <td>Includes</td>
+            <td><code>console.log("hello".includes("e"));// true</code> </td>
+            <td><code>print("e" in "hello") # True   (includes -> in)</code> 
+            </td>
+        </tr>
+
+  
+
+
+        <tr>
+            <td>===</td>
+            <td><code>console.log([]===[]) // true</code></td>
+            <td><code>print([]==[]) # True</code></td>
+        </tr>
+        <tr>
+            <td>!</td>
+            <td><code>console.log(!true) // false</code></td>
+            <td><code>print(not True) # False</code></td>
+        </tr>
+
+        <tr>
+            <td>Ternary</td>
+            <td><code>console.log(true ? "yes" : "no") // "yes"</code><br></br>
+                <code>const age = 20;</code><br></br>
+            <code> const status = age >= 18 ? "adult" : "minor";</code>
+            </td>
+            <td><code>print("yes" if True else "no") # "yes"</code><br></br>
+                <code>age = 20;</code><br></br>
+            <code>"adult" if age >= 18 else "minor"</code></td>
+        </tr>
+
+        <tr>
+            <td>&& || => and or</td>
+            <td><code>console.log( 2 < 5 && 7 < 5) // false</code> <br></br>
+            <code>console.log( 2 < 5 || 7 < 5) // true</code></td>
+
+            <td><code>print( 2 < 5 and 7 < 5) # False</code><br></br>
+            <code>print( 2 < 5 or 7 < 5) # True</code></td>
+        </tr>
+
+        <tr>
+            <td>Destructuring/ unpacking</td>
+            <td><code>const [first, second, third] = [1, 2, 3];</code></td>
+            <td><code>first, second, third = [1, 2, 3]</code></td>
+        </tr>
+        <tr>
+            <td>spread operator</td>
+            <td><code>const [head, ...tail] = [1, 2, 3, 4, 5];   // ... spread;</code></td>
+            <td><code>head, *tail = [1, 2, 3, 4, 5]</code></td>
+        </tr>
+
+        <tr>
+            <td>Loops</td>
+            <td><code>for (let i = 0; i < 5; i++) {}</code></td>
+            <td><code>for i in range(5):</code></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
