@@ -31,9 +31,20 @@
     <h3>How It Works</h3>
     <ul>
         <li><strong>A Separate Folder:</strong> A virtual environment creates a small folder inside your project directory that holds its own copy of Python and its own library folder.</li>
-        <li><strong>Activation:</strong> You run a simple command in your terminal to turn the environment on before you start working.</li>
+        <li><strong>Activation:</strong> Without uv you need to run a simple command in your terminal to turn the environment on before you start working.</li>
         <li><strong>Isolation:</strong> Any package you install while the environment is active stays inside that specific folder and does not affect the rest of your computer.</li>
     </ul>
+<h2>If you install a dependency with uv do you still need to check that you are in the project 's environment?</h2>
+
+<p>One of the nice things about uv is that it automatically finds and uses the project's virtual environment, so you don't need to manually activate it first like you often would with venv + pip.    </p>
+<code>uv add[package-name]</code>
+   <ul>
+        <li>✅ you don't need to check if you are in the project 's environment.</li>
+        <li>✅ uv automatically finds and uses the project's virtual environment.</li>
+        <li>✅ uv automatically installs the package into the virtual environment.</li>
+        <li>✅ uv automatically updates the pyproject.toml file to include the new dependency.</li>
+    </ul>
+<h2>If you don't use uv, how do you manage virtual environments?</h2>
     <h3>what does pip3 install do in terms of virtual environment?</h3>
     <p>Pip3 install does not directly install the package inside a virtual environment. Instead, it installs the package into the global site-packages directory on your Mac. This means that if you have multiple versions of Python installed on your Mac, pip3 will install the package in the version that is currently active.</p>
 <p>When you run pip3 install, its behavior depends entirely on whether your virtual environment is active or inactive in your terminal.</p>
@@ -58,6 +69,8 @@
         <li>🔴 Inactive (Global): user@MacBook ~ %</li>
     </ul>
     You can also run which pip3. If it points to your project folder, it is safe to install. If it points to /usr/local/bin/ or /opt/homebrew/, it will install globally.</p>
+
+
 
 </article>
 <footer>
