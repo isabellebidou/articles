@@ -16,13 +16,18 @@ code {
     border-radius: 4px;
     font-family: monospace;
     overflow-x: auto;
+    cursor: pointer;
+}
+
+code:hover {
+    background: #a8a8a8;
 }
 pre {
     background: #f4f4f4;
     font-family: monospace;
     padding: 10px;
     border-radius: 4px;
-    overflow-x: auto;
+    overflow-x: scroll;
 }
 table {
     width: 100%;

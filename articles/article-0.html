@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flow Control</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Introduction</h1>
+        <h2>A brief introduction to this series of articles to tell my journey towards AI software development.</h2>
+        <p> I come from Java/JavaScript development. Those last few years I have developed using Node.js and React.js
+            mostly.
+            In the last year I started working on powering my English teaching platform with AI.
+            I am currently working on my software development skills and exploring the new possibilities with AI.</p>
+        <p> I am interested in all aspects, ranging from local video generation to optimised agentic workflows to tress
+            placement appreciation in speech.</p>
+        <p> I would like to start by saying a few words about some of the most important concepts and techniques that I
+            am endevouring to learn about as they seem to be of the utmost importance in today's AI landscape.</p>
+
+        <h3>LLMs</h3>
+        <p> Large language models or LLMs and especially the possibility of running them locally represents a huge
+            potential. There is no denying that the multiplication of AI providers and infinite possibilities and
+            combinations can sum up to huge expenses that make you take tapes towards independence.</p>
+        <p> I have started testing a few LLM's locally using LM Studio or Ollama. I have started implementing an
+            integration to VS code in the chat, the Codex and the Continue panels. So far I've had the best result via
+            the continue panel. The integration of the auto complete happened seamlessly. I especially recommend Kyle's
+            video I will be linking below.</p>
+        <p> Regarding VS code integration with VS code, I have had the best result via the continue panel. The LLMs I
+            have tested as of today 9/09/2026 are:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Setup</th>
+                    <th>Model</th>
+                    <th>Endpoint</th>
+                    <th>VS Code integration</th>
+                    <th>Tools</th>
+                    <th>Result</th>
+                    <th>Current verdict</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>LM Studio</td>
+                    <td><code>qwen/qwen3.8-27b</code></td>
+                    <td><code>127.0.0.1:1234</code></td>
+                    <td>GitHub Copilot / customoai</td>
+                    <td><code>true</code></td>
+                    <td>Appeared, but extremely slow / fans</td>
+                    <td>❌ Not practical</td>
+                </tr>
+                <tr>
+                    <td>LM Studio</td>
+                    <td><code>qwen/qwen3.8-27b</code></td>
+                    <td><code>127.0.0.1:1234</code></td>
+                    <td>GitHub Copilot / customendpoint</td>
+                    <td><code>true</code></td>
+                    <td>Sometimes appeared, then hung</td>
+                    <td>❌ Not practical</td>
+                </tr>
+                <tr>
+                    <td>LM Studio</td>
+                    <td><code>qwen/qwen3-4b-2507</code></td>
+                    <td><code>127.0.0.1:1234</code></td>
+                    <td>GitHub Copilot / customendpoint</td>
+                    <td><code>true</code></td>
+                    <td>Raw API worked; Agent still problematic</td>
+                    <td>❌ Copilot path problematic</td>
+                </tr>
+                <tr>
+                    <td>LM Studio</td>
+                    <td><code>qwen/qwen3-4b-2507</code></td>
+                    <td><code>127.0.0.1:1234/v1</code></td>
+                    <td>Qwen Code Companion</td>
+                    <td>N/A</td>
+                    <td><code>LM STUDIO WORKS</code> via API</td>
+                    <td>✅ Endpoint works</td>
+                </tr>
+                <tr>
+                    <td>Ollama</td>
+                    <td><code>qwen2:7b</code></td>
+                    <td><code>127.0.0.1:11434/v1</code></td>
+                    <td>GitHub Copilot / customendpoint</td>
+                    <td><code>true</code></td>
+                    <td>Model appeared, but Agent hung</td>
+                    <td>❌ Copilot path</td>
+                </tr>
+                <tr>
+                    <td>Ollama</td>
+                    <td><code>qwen2:7b</code></td>
+                    <td><code>127.0.0.1:11434/v1</code></td>
+                    <td>Qwen Code Companion 0.21.11</td>
+                    <td>native agent tools</td>
+                    <td>Agent eventually started; permissions worked</td>
+                    <td>🟡 Works partially</td>
+                </tr>
+                <tr>
+                    <td>Ollama</td>
+                    <td><code>qwen2:7b</code></td>
+                    <td><code>127.0.0.1:11434/v1</code></td>
+                    <td>Qwen Code Companion 0.21.11</td>
+                    <td>filesystem</td>
+                    <td><code>create hello.txt</code> worked</td>
+                    <td>🟢 Tooling partly works</td>
+                </tr>
+                <tr>
+                    <td>Ollama</td>
+                    <td><code>qwen2:7b</code></td>
+                    <td><code>127.0.0.1:11434/v1</code></td>
+                    <td>Qwen Code Companion 0.21.11</td>
+                    <td>read/edit</td>
+                    <td>Hangs; Ollama sees <strong>nothing</strong></td>
+                    <td>🔴 Companion/ACP problem</td>
+                </tr>
+                <tr>
+                    <td>LM Studio</td>
+                    <td><code>qwen/qwen3.8-27b</code></td>
+                    <td><code>127.0.0.1:1234</code></td>
+                    <td>Continue</td>
+                    <td>Agent-ish / coding</td>
+                    <td><strong>Works!</strong></td>
+                    <td>🟢 <strong>Best result so far</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Hugging Face</h3>
+        <p>Hugging Face is at the moment the hub that enables you to best comprehend the extent of development of LLMs.
+            Structure enables you to test and study LLMs and structure and gives it the best visibility. I discovered
+            hugging face thanks to a few videos on YouTube among which one by Kyle from Web dev simplified that
+            explained how to run LLMs locally.</p>
+        <p> I am following the AI agent free course On Hugging Face. I recommend it because hogging face hugging face is
+            definitely the hub where all AI tech people should display their work. Having said that I find that the
+            course can be difficult to follow at times because it references</p>
+
+
+        <h3>Python</h3>
+        <p>
+            It's been a few attempts for me to try and learn python and it has been extremely frustrating because so far
+            the experience was extremely boring because most tutorials are addressed to complete beginners. I have tried
+            on several occasions to follow tutorials and failed miserably out of boredom. Lately I have convinced myself
+            that I needed to make another attempt because Python has become unavoidable for anyone who wants to progress
+            in AI. </p>
+        <p>
+            One of the main issues has been the widespread use of "sandbox" environments like Jupyter or consoles that
+            unnecessarity and ridiculously complicate the learning experience. I much rather use an IDE like VS code the
+            same way I have learnt to code in all the programming languages I have learnt so far. </p>
+        <p> finally made up my mind to give it another chance and look for tutorials aimed at Java or JavaScript
+            developers. I am extremely satisfied with the course I found on Udemy and I will share the link at the end
+            of this article. The course is called "Become an AI Engineer: Python for JavaScript Developers" by Vilva
+            Athiban. It is very well structured and it is a great way to learn Python if you are already familiar with
+            JavaScript. It is not free but it is worth every penny.
+        <ul>
+            <li><a
+                    href="https://www.udemy.com/share/10frVT3@uK4V56gS3WK8XDW_4g8aZ2siSz6018-PMCKAFIfVurwfSUjEr_sdTXLd5-H1TOHHlg==/">Become
+                    an AI Engineer: Python for JavaScript Developers</a> course by Vilva Athiban on Udemy</li>
+            <li><a href="https://www.huggingface.co/">Hugging Face</a></li>
+            <li><a href="https://youtu.be/UngVdAsQEiU">The Best Local Agentic Coding Workflow</a> by Kyle - Web Dev
+                Simplified</li>
+        </ul>
+
+
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>

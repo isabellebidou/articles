@@ -1,5 +1,12 @@
 const articles = [
     {
+        title: "Introduction",
+        description: "A brief introduction to this series of articles to tell my journey towards AI software development",
+        date: "2026-09-09",
+        updatedate: "2026-09-08",
+        url: "articles/article-0.html"
+    },
+    {
         title: "Starting a project ",
         description: "Exploring the boiler plate and setup differences between JavaScript and Python projects.",
         date: "2026-09-01",
