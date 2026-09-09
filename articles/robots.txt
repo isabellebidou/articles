@@ -1,7 +1,5 @@
 User-agent: *
-2
 Allow: /
-3
- 
-4
+
 Sitemap: https://articles.isabellebidou.com/sitemap.xml
+`
