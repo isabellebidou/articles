@@ -11,7 +11,7 @@ body {
     color: #333;
 }
 code {
-    background: #bbbaba;
+    background: #e0dfdf;
     padding: 2px 4px;
     border-radius: 4px;
     font-family: monospace;
@@ -20,7 +20,7 @@ code {
 }
 
 code:hover {
-    background: #a8a8a8;
+    background: #e6e7e4;
 }
 pre {
     background: #f4f4f4;

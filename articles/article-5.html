@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flow Control</title>
     <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
 </head>
 
 <body>
@@ -27,6 +28,97 @@
             <th>Python</th>
         </tr>
     </thead>
+
+    <tr>
+        <td>if / else</td>
+        <td><pre><code>const age = 25;
+if (age < 18) {
+  console.log("minor");
+} else if (age < 65) {
+  console.log("adult");
+} else {
+  console.log("senior");
+}</code></pre></td>
+                <td><pre><code>age = 25
+if age < 18:
+    print("minor")
+elif age < 65:
+    print("adult")
+else:
+    print("senior")</code></pre></td>
+    </tr>
+
+    <tr>
+        <td>switch</td>
+        <td><pre><code>const status = 200;
+switch (status) {
+  case 200:
+    console.log("OK");
+    break;
+  default:
+    console.log("unknown");
+}</code></pre></td>
+                <td>match / case <pre><code>status = 200
+match status:
+    case 200:
+        print("OK")
+    case _:  # underscore = default (matches anything)
+        print("unknown")</code></pre></td>
+    </tr>
+
+        <tr>
+        <td>for loop over values</td>
+        <td><pre><code>const arr = [10, 20, 30];
+for (const value of arr) {
+  console.log(value);
+}</code></pre></td>
+                <td><pre><code>arr = [10, 20, 30]
+for value in arr:
+    print(value)</code></pre></td>
+    </tr>
+
+
+            <tr>
+        <td>continue / break</td>
+        <td><pre><code>for (const value of arr) {
+  if (value === 20) continue; // skip 20
+  console.log(value);
+}
+for (const value of arr) {
+  if (value === 20) break;    // stop at 20
+  console.log(value);
+}</code></pre></td>
+<td> Same as js<pre><code>for value in arr:
+    if value == 20:
+        continue  # skip 20
+    print(value)
+for value in arr:
+    if value == 20:
+        break     # stop at 20
+    print(value)</code></pre></td>
+    </tr>
+
+
+    <tr>
+        <td>forEach with index (entries) </td>
+        <td><pre><code>const fruits = ["a", "b", "c"];
+fruits.forEach((value, index) => console.log(index, value));</code></pre></td>
+<td> enumerate -> like forEach with index<pre><code>fruits = ["a", "b", "c"]
+for index, value in enumerate(fruits):
+    print(index, value)</code></pre></td>
+    </tr>
+
+       <tr>
+        <td>map & filter</td>
+        <td><pre><code>const numbers = [1, 2, 3, 4, 5];
+const squares = numbers.map((n) => n * n);
+const evens = numbers.filter((n) => n % 2 === 0);
+console.log(squares, evens);</code></pre></td>
+<td> map & filter via list comprehensions (operation goes FIRST) <pre><code>numbers = [1, 2, 3, 4, 5]
+squares = [num * num for num in numbers]  # map
+evens = [num for num in numbers if num % 2 == 0] # filter
+print(squares, evens)</code></pre></td>
+    </tr>
 
     <tbody>
         
