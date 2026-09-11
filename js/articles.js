@@ -37,7 +37,7 @@ const articles = [
     {
         title: "Flow Control",
         description: "Comparing Flow Control differences between Python and JavaScript.",
-        date: "2026-09-08",
+        date: "2026-11-08",
         updatedate: null,
         url: "articles/article-5.html"
     }
