@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison between Functions in JavaScript and Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Functions</h1>
+        <h2>Comparison between Functions in JavaScript and Python</h2>
+ <table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+        </tr>
+    </thead>
+
+    <tr>
+        <td>Basic function</td>
+        <td><pre><code>const book = {title: "Dune", author: "herbert"}
+function describe(book) {
+  return `${book.title} is good`;
+}
+console.log(describe({ title: "Dune" }));</code></pre></td>
+<td>`def` instead of `function`, a colon + indentation instead of braces.<pre><code>book = {"title": "Dune", "author: "Herbert"}
+
+def describe(book):
+    return f"{book['title']} is good"
+
+print(describe({"title": "Dune"}))</code></pre></td>
+    </tr>
+
+    <tr>
+        <td>undefined and none</td>
+        <td><pre><code>function noop() {}
+console.log(noop());  // undefined</code></pre></td>
+                <td>pass (returns None)<pre><code>def noop():
+    pass # `pass` returns None — Python's null
+
+print(noop()) # None</code></pre></td>
+    </tr>
+
+        <tr>
+        <td>Order of Arguments</td>
+        <td>Arguments print in the same order as they were passed in<pre><code>function printFn(a, b, c) {
+  console.log(a, b, c);
+}
+printFn(1, 2, 3);</code></pre></td>
+                <td>the non  positional *  vs the  positional /<pre><code># Anything AFTER * must be passed by name, not position.
+def print_fn(a, *, b, c):
+    print(a, b, c)
+
+print_fn(1, b=3, c=2)
+# The / separator forces positional-only.
+def positional(a, b, /):
+    print(a, b)
+
+positional(1, 2)</code></pre></td>
+    </tr>
+
+
+            <tr>
+        <td>Arrow and Lambda functions</td>
+        <td>Arrow function<pre><code>const square = (x) => x * x;
+console.log(square(5));  // 25
+</code></pre></td>
+<td> Lambda functions<pre><code>square = lambda x: x * x
+print(square(5))  # 25</code></pre></td>
+    </tr>
+
+
+
+
+
+
+    <tr>
+        <td>Closures</td>
+        <td>the inner fn remembers outer state<pre><code>function make() {
+  let borrowed = 0;
+  return function borrow() {
+    borrowed += 1; // knows about `borrowed`
+    return borrowed;
+  };
+}</code></pre></td>
+<td>need `nonlocal` to REASSIGN an outer variable<pre><code>def make():
+    borrowed = 0
+    def borrow():
+        nonlocal borrowed # without this: UnboundLocalError
+        borrowed += 1
+        return borrowed
+    return borrow</code></pre></td>
+    </tr>
+
+       <tr>
+        <td>Decorators</td>
+        <td>no decorators<pre><code>function log(fn) {
+  return function (...args) {
+    console.log("starting the function");
+    const result = fn(...args);
+    console.log("function executed");
+    return result;
+  };
+}
+const printTitle = log((title) => `I need to print ${title}`);
+console.log(printTitle("Python for JS Devs"));</code></pre></td>
+<td> Decorators<pre><code>def log(fn):
+    def wrapper(*args, **kwargs):
+        print("starting the function")
+        result = fn(*args, **kwargs)
+        print("function executed: {result}")
+        return result
+    return wrapper
+
+@log  # <--  readable wrapping
+def print_title(title):
+    return f"I need to print {title}"
+
+print(print_title("Python for JS Devs"))</code></pre></td>
+    </tr>
+
+    <tbody>
+        
+    </tbody>
+</table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>

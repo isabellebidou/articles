@@ -8,7 +8,7 @@ const articles = [
     },
     {
         title: "Starting a project ",
-        description: "Exploring the boiler plate and setup differences between JavaScript and Python projects.",
+        description: "Exploring boiler plate and setup differences between JavaScript and Python projects.",
         date: "2026-09-01",
         updatedate: "2026-09-08",
         url: "articles/article-1.html"
@@ -22,14 +22,14 @@ const articles = [
     },
     {
         title: "Syntax ",
-        description: "Comparing the syntax differences between Python and JavaScript.",
+        description: "Comparing syntax differences between Python and JavaScript.",
         date: "2026-09-08",
         updatedate: null,
         url: "articles/article-3.html"
     },
     {
         title: "Data Structures ",
-        description: "Comparing the data structure differences between Python and JavaScript.",
+        description: "Comparing data structure differences between Python and JavaScript.",
         date: "2026-09-08",
         updatedate: null,
         url: "articles/article-4.html"
@@ -40,6 +40,13 @@ const articles = [
         date: "2026-09-11",
         updatedate: null,
         url: "articles/article-5.html"
+    },
+    {
+        title: "Functions",
+        description: "Functions in Python ",
+        date: "2026-09-15",
+        updatedate: null,
+        url: "articles/article-6.html"
     }
 ];
 
