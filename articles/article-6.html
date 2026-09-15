@@ -107,16 +107,7 @@ print(square(5))  # 25</code></pre></td>
 
        <tr>
         <td>Decorators</td>
-        <td>no decorators<pre><code>function log(fn) {
-  return function (...args) {
-    console.log("starting the function");
-    const result = fn(...args);
-    console.log("function executed");
-    return result;
-  };
-}
-const printTitle = log((title) => `I need to print ${title}`);
-console.log(printTitle("Python for JS Devs"));</code></pre></td>
+        <td>no Decorators</td>
 <td> Decorators<pre><code>def log(fn):
     def wrapper(*args, **kwargs):
         print("starting the function")
