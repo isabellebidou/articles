@@ -56,11 +56,18 @@ const articles = [
         url: "articles/article-7.html"
     },
     {
-        title: "modules - packages",
+        title: "Modules - packages",
         description: "Modules and packages in Python",
         date: "2026-09-18",
         updatedate: null,
         url: "articles/article-8.html"
+    },
+    {
+        title: "Error handling",
+        description: "Error handling in Python",
+        date: "2026-09-18",
+        updatedate: null,
+        url: "articles/article-9.html"
     }
 ];
 

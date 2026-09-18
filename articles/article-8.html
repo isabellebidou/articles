@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-  gtag('config', 'G-YKYCPDL3YL');
-</script>
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modules and packages in Python</title>
     <link rel="stylesheet" href="./../css/style.css">
@@ -29,25 +29,27 @@
     <article class="container article-content">
         <h1>Modules and Packages</h1>
         <h2>Comparison between JavaScript and Python</h2>
-    <p>The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by Vilva Athiban</p>
- <table>
-    <thead>
-        <tr>
-            <th>Feature</th>
-            <th>JavaScript</th>
-            <th>Python</th>
-        </tr>
-    </thead>
+        <p>The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by
+            Vilva Athiban</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>JavaScript</th>
+                    <th>Python</th>
+                </tr>
+            </thead>
 
-    <tr>
-        <td>Importing</td>
-        <td><pre><code>import _ from "lodash"; // whole module
+            <tr>
+                <td>Importing</td>
+                <td>
+                    <pre><code>import _ from "lodash"; // whole module
 import { sqrt } from "./mathUtils.js";  // a specific export
-import * as utils from "./utils.js"; // namespace / alias
+import * as utils from "./utils.js"; // namespace / alias</code>
 
 // --- Exporting (lib/print.js) ---
-export function printLine() {
-  console.log("hello world");
+<code>export function printLine() {
+  console.log("hello world");</code>
 }
 // or a barrel file (index.js) re-exporting:
 //   export { printLine } from "./print.js";
@@ -59,14 +61,16 @@ import { c } from "./folder1/folder2.js";
 
 // Node.js ships with very little; 
 // you install most utils from npm,
-// so package.json tends to grow large.</code></pre></td>
-<td><pre><code>import math  # whole module
+// so package.json tends to grow large.</pre>
+                </td>
+                <td>
+                    <pre><code>import math  # whole module
 from math import sqrt # a specific function
 import math as m   # alias with `as`
 
 print(math.sqrt(10))
 print(sqrt(4))   # 2.0
-print(m.sqrt(16)) # 4.0
+print(m.sqrt(16)) # 4.0</code>
 
 # Best practice: 
 # import only what you need (from module import thing),
@@ -97,16 +101,17 @@ print(m.sqrt(16)) # 4.0
 
 # Python is "batteries included" — 
 # the standard library covers a huge amount,
-# so you reach for pip far less often than npm.</code></pre></td>
-    </tr>
+# so you reach for pip far less often than npm.</pre>
+                </td>
+            </tr>
 
-   
 
-       
-    <tbody>
-        
-    </tbody>
-</table>
+
+
+            <tbody>
+
+            </tbody>
+        </table>
 
     </article>
     <footer>

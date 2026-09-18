@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error handling in Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Error handling</h1>
+        <h2>Comparison between JavaScript and Python</h2>
+        <p>The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by
+            Vilva Athiban</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>JavaScript</th>
+                    <th>Python</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>error catching</td>
+                    <td>try / catch / finally
+                        <pre><code>function divFn() {
+  return "hello";
+}
+
+try {
+  divFn();
+} catch (error) {
+  console.log(error);
+} finally {
+  console.log("I am done");
+}
+</code></pre>
+                    </td>
+                    <td>try / except / finally
+                        <pre><code>try:
+    div_fn()
+except Exception as error: # `except`
+    print(error)
+finally:
+    print("I am done")</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Throwing errors</td>
+                    <td>throw
+                        <pre><code>function risky() {
+  throw new Error("this is a type error");
+}
+
+try {
+  risky();
+} catch (error) {
+  console.log(error.message);   
+  // "this is a type error"
+}</code></pre>
+                    </td>
+                    <td>raise
+                        <pre><code>def risky():
+    raise TypeError("this is a type error")   
+    # can't just `raise "..."`
+
+try:
+    risky()
+except Exception as error:
+    print(error)  # "this is a type error"
+</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>specific error types</td>
+                    <td>
+                        <pre><code>try {
+  risky();
+} catch (error) {
+  if (error instanceof TypeError) {
+    console.log("this is a type error");
+  } else {
+    console.log("some other error");
+  }
+}</code>
+
+// --- Custom error types ---
+<code>class CustomError extends Error {}</code>
+
+<code>try {
+  throw new CustomError("this is a custom error");
+} catch (error) {
+  if (error instanceof CustomError) {
+    console.log("hello, I am a custom error");
+  }
+}</code>
+        </pre>
+                    </td>
+
+                    <td>
+                        <pre><code>try:
+    risky()
+except TypeError as t_error:
+    print("this is a type error")
+except Exception as error:  # catch-all 
+    print("some other error")</code>
+
+# --- Custom exceptions: subclass Exception ---
+<code>class CustomError(Exception):
+    pass # empty body — inherits everything</code>
+
+<code>try:
+    raise CustomError("this is a custom error")
+except CustomError as c_error:
+    print("hello, I am a custom error")
+except Exception:
+    print("caught by the generic handler")</code></pre>
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
