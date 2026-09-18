@@ -47,6 +47,20 @@ const articles = [
         date: "2026-09-15",
         updatedate: null,
         url: "articles/article-6.html"
+    },
+    {
+        title: "OOP",
+        description: "OOP in Python ",
+        date: "2026-09-18",
+        updatedate: null,
+        url: "articles/article-7.html"
+    },
+    {
+        title: "modules - packages",
+        description: "Modules and packages in Python",
+        date: "2026-09-18",
+        updatedate: null,
+        url: "articles/article-8.html"
     }
 ];
 

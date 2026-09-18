@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+      <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YKYCPDL3YL');
+</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Oriented Programming, classes in Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Object Oriented Programming and classes</h1>
+        <h2>Comparison between JavaScript and Python</h2>
+    <p> The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by Vilva Athiban</p>
+ <table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>JavaScript</th>
+            <th>Python</th>
+        </tr>
+    </thead>
+
+    <tr>
+        <td>classes</td>
+        <td><pre><code>class Book {
+  constructor(title) {
+    this.title = title;
+    this.available = true;
+  }
+
+  describe() {
+    return `${this.title} is the title of the book`;
+  }
+
+  borrow() {
+    this.available = false;
+  }
+
+  // static method
+  static isEven(number) {
+    return number % 2 === 0;
+  }
+}
+
+const book = new Book("new title");
+console.log(book.describe());
+book.borrow();
+console.log(book.available);     // false
+console.log(Book.isEven(4));     // true</code></pre></td>
+<td><pre><code>class Book:
+    def __init__(self, title):   # constructor
+        self.title = title
+        self.available = True    # capital True
+
+    def describe(self):  # every method gets `self` first
+        return f"{self.title} is the title of the book"
+
+    def borrow(self):
+        self.available = False
+
+    @staticmethod
+    def is_even(number):   # no self
+        return number % 2 == 0
+
+
+book = Book("new title")  # no `new` keyword
+print(book.describe())
+book.borrow()
+print(book.available)   # False
+print(Book.is_even(4))  # True</code></pre></td>
+    </tr>
+
+    <tr>
+        <td>Inheritance</td>
+        <td><pre><code>class BookDetails extends Book {
+  constructor(title, author) {
+    super(title);                // pass args to parent
+    this.author = author;
+  }
+
+  printDetails() {
+    return `${this.title} is written by ${this.author}`;
+  }
+}
+
+const bd = new BookDetails("light bulb", "Edison");
+console.log(bd.printDetails());  
+// "light bulb is written by Edison"</code></pre></td>
+                <td>pass the parent as an argument to the class<pre><code>class BookDetails(Book):
+    def __init__(self, title, author):
+        super().__init__(title)   # super() takes NO args itself; 
+                                  # call __init__ on it
+        self.author = author
+
+    def print_details(self):
+        return f"{self.title} is written by {self.author}"
+
+
+bd = BookDetails("light bulb", "Edison")
+print(bd.print_details())          # "light bulb is written by Edison"
+
+# For JS devs: the two things that feel weird at first are 
+# (1) passing `self`
+# to every method and 
+# (2) __init__ as the constructor name. 
+# Everything else maps 1:1.</code></pre></td>
+    </tr>
+
+       
+    <tbody>
+        
+    </tbody>
+</table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
