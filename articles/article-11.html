@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files in Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Files</h1>
+        <h2>Comparison between JavaScript and Python</h2>
+        <p>The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by
+            Vilva Athiban</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>JavaScript</th>
+                    <th>Python</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>Read a whole file</td>
+                    <td>
+<pre><code>import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";</code></pre>
+                        <pre><code>const content = fs.readFileSync("test.txt", "utf-8");
+console.log(content);
+</code></pre>
+                    </td>
+                    <td># Use `with` (a context manager): it auto-closes the file when the block ends,
+# even if an exception is raised. No manual close() needed.
+                        <pre><code>with open("test.txt") as f:# default mode is "r" (read)
+    content = f.read()
+print(content)</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Write</td>
+                    <td>Write (overwrites)
+                        <pre><code>fs.writeFileSync("test.txt", "This is new text");</code></pre>
+                    </td>
+                    <td>Write (mode "w" overwrites; default "r" is read-only)
+                        <pre><code>with open("test.txt", "w") as f:   # forgetting "w" -> "not writable" error
+    f.write("This is new text")</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Read line by line</td>
+                    <td><pre><code>const lines = fs.readFileSync("test.txt", "utf-8").split("\n");
+for (const line of lines) {
+  console.log(line);
+}</code></pre></td>
+                    <td><pre><code>with open("test.txt") as f:
+    for line in f:   # iterate the file object directly
+        print(line, end="")
+
+# In Python, file open/read/write/close are all SYNCHRONOUS operations.</code></pre></td>
+                </tr>
+                <tr>
+                    <td>Paths</td>
+                    <td><pre><code>const __filename = fileURLToPath(import.meta.url);
+console.log(path.extname(__filename));   // ".js"     (extension)
+console.log(path.basename(__filename));  // file name
+console.log(path.dirname(__filename));   // parent folder</code></pre></td>
+                    <td><pre><code>import pathlib
+
+file_path = pathlib.Path(__file__) # __file__ = current file
+print(file_path.suffix)     # ".py"     extension
+print(file_path.name)       # full file name
+print(file_path.stem)       # name without extension
+print(file_path.parent)     # parent folder
+print(file_path.absolute()) # absolute path</code></pre></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>

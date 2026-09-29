@@ -68,6 +68,20 @@ const articles = [
         date: "2026-09-18",
         updatedate: null,
         url: "articles/article-9.html"
+    },
+    {
+        title: "Async",
+        description: "Async in Python",
+        date: "2026-09-29",
+        updatedate: null,
+        url: "articles/article-10.html"
+    },
+    {
+        title: "Files",
+        description: "Files in Python",
+        date: "2026-09-29",
+        updatedate: null,
+        url: "articles/article-11.html"
     }
 ];
 

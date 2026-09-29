@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async in Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>Async</h1>
+        <h2>Comparison between JavaScript and Python</h2>
+        <p>The information comes from the Udemy course "Become an AI Engineer: Python for JavaScript Developers" by
+            Vilva Athiban</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>JavaScript</th>
+                    <th>Python</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>async / await</td>
+                    <td>
+                        <pre><code>async function fn(bookId) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return { title: "dummy" };
+}
+
+async function main() {
+  const book1 = await fn(1);
+  console.log(book1.title);
+}
+
+main();
+</code></pre>
+                    </td>
+                    <td>asyncio.run()
+                        <pre><code>import asyncio
+import requests 
+
+# --- mimic a 1s API call with asyncio.sleep ---
+async def fn(book_id):
+    await asyncio.sleep(1) # like setTimeout 
+    return {"title": "dummy"}
+
+# --- A main() that awaits it ---
+async def main():
+    book1 = await fn(1)
+    print(book1["title"])
+
+
+asyncio.run(main()) # <-- starts the event loop</code></pre>
+                    </td>
+                </tr>
+                <tr>
+                    <td>A real HTTP call</td>
+                    <td>
+                        <pre><code>import axios from "axios";
+async function getData() {
+  const response = await axios.get("https://api.example.com/data");
+  console.log(response.status); // 200
+  console.log(response.data);// parsed JSON
+  // axios also has .post / .put / .patch / .delete 
+}</code></pre>
+                    </td>
+                    <td>
+                        <pre><code>def get_data():
+    response = requests.get("https://api.example.com/data")
+    print(response.status_code)     # 200
+    print(response.json())          # parsed JSON body
+    # requests also has .post / .put / .patch / .delete
+</code></pre>
+                    </td>
+                </tr>
+                
+
+
+            </tbody>
+        </table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
