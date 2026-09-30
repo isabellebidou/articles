@@ -43,15 +43,24 @@
                 <tr>
                     
                     <td>Express
-<pre><code>import express from "express";
+<pre>npm init
+make sure you use module  instead of commonjs    "type": "module",
+npm i express nodemon
+insert start script in package.json  "server": "nodemon app.js"
+run with 'npm run server' stop with 'ctrl + c'
+</pre><pre><code>const express = require("express");
 
+<code>import express from "express";
 const app = express();
 app.use(express.json());
+app.listen(3000, () => {
+});
 
 const books = [
   { id: 1, title: "Dune", author: "Herbert", year: 1965 },
   { id: 2, title: "1984", author: "Orwell", year: 1949 },
 ];
+export default app;// at the bottom 
 </code></pre>// --- Basic endpoint ---<pre><code>app.get("/", (req, res) => {
   res.json({ message: "success" });
 });
@@ -80,7 +89,9 @@ app.listen(8000, () => console.log("listening on :8000"));
 </code></pre>
                     </td>
                     <td>Fast API
-                        <pre>`uv add fastapi`
+                        <pre>if new `uv init[projectName]` then cd into it `code.`
+        
+`uv add fastapi`
 `uv add uvicorn`
 Auto-generated interactive docs are served at `/docs` once the app is running
 # Run:  uvicorn main:app --reload (serves on http://localhost:8000)
