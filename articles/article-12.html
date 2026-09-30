@@ -44,13 +44,14 @@
                     
                     <td>Express
 <pre>npm init
-make sure you use module  instead of commonjs    "type": "module",
+make sure you use module  instead of commonjs
+"type": "module",
 npm i express nodemon
 insert start script in package.json  "server": "nodemon app.js"
 run with 'npm run server' stop with 'ctrl + c'
 </pre><pre><code>const express = require("express");
 
-<code>import express from "express";
+import express from "express";
 const app = express();
 app.use(express.json());
 app.listen(3000, () => {
@@ -61,16 +62,21 @@ const books = [
   { id: 2, title: "1984", author: "Orwell", year: 1949 },
 ];
 export default app;// at the bottom 
-</code></pre>// --- Basic endpoint ---<pre><code>app.get("/", (req, res) => {
+</code></pre>// --- Basic endpoint ---
+<pre>test with http://localhost:3000/
+<code>app.get("/", (req, res) => {
   res.json({ message: "success" });
 });
-</code></pre>// --- Path parameter ---<pre><code>app.get("/books/:id", (req, res) => {
+</code></pre>// --- Path parameter ---<pre>test with http://localhost:3000/books/2
+<code>app.get("/books/:id", (req, res) => {
   const id = parseInt(req.params.id);
   const book = books.find((b) => b.id === id);
   if (!book) return res.status(404).json({ detail: "book not found" });
   res.json(book);
 });
-</code></pre>// --- Query parameter (optional) ---<pre><code>app.get("/books", (req, res) => {
+</code></pre>// --- Query parameter (optional) ---<pre>test with http://localhost:3000/books?id=2 
+or http://localhost:3000/books 
+<code>app.get("/books", (req, res) => {
   const id = req.query.id ? parseInt(req.query.id) : null;
   if (id === null) return res.json(books);
   res.json(books.find((b) => b.id === id));
@@ -83,10 +89,7 @@ export default app;// at the bottom
 </code></pre>// --- Middleware (must be injected manually per app / route) ---<pre><code>app.use((req, res, next) => {
   console.log(req.method);
   next();
-});
-
-app.listen(8000, () => console.log("listening on :8000"));
-</code></pre>
+});</code></pre>
                     </td>
                     <td>Fast API
                         <pre>if new `uv init[projectName]` then cd into it `code.`
