@@ -82,6 +82,13 @@ const articles = [
         date: "2026-09-29",
         updatedate: null,
         url: "articles/article-11.html"
+    },
+    {
+        title: "REST APIs",
+        description: "REST APIs in Python",
+        date: "2026-09-30",
+        updatedate: null,
+        url: "articles/article-12.html"
     }
 ];
 

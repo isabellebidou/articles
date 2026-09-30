@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST APIs in Python</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>REST APIs</h1>
+        <h2>Comparison between JavaScript and Python</h2>
+        <p>The information comes from the Udemy course <a href="https://www.udemy.com/course/python-for-javascript-developers-become-an-ai-engineer-/learn/lecture/57127859#overview">"Become an AI Engineer: Python for JavaScript Developers" by
+            Vilva Athiban</a></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>JavaScript</th>
+                    <th>Python</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    
+                    <td>Express
+<pre><code>import express from "express";
+
+const app = express();
+app.use(express.json());
+
+const books = [
+  { id: 1, title: "Dune", author: "Herbert", year: 1965 },
+  { id: 2, title: "1984", author: "Orwell", year: 1949 },
+];
+</code></pre>// --- Basic endpoint ---<pre><code>app.get("/", (req, res) => {
+  res.json({ message: "success" });
+});
+</code></pre>// --- Path parameter ---<pre><code>app.get("/books/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const book = books.find((b) => b.id === id);
+  if (!book) return res.status(404).json({ detail: "book not found" });
+  res.json(book);
+});
+</code></pre>// --- Query parameter (optional) ---<pre><code>app.get("/books", (req, res) => {
+  const id = req.query.id ? parseInt(req.query.id) : null;
+  if (id === null) return res.json(books);
+  res.json(books.find((b) => b.id === id));
+});
+</code></pre>// --- POST with a JSON body ---<pre><code>app.post("/books", (req, res) => {
+  const book = req.body;
+  books.push(book);
+  res.json(book);
+});
+</code></pre>// --- Middleware (must be injected manually per app / route) ---<pre><code>app.use((req, res, next) => {
+  console.log(req.method);
+  next();
+});
+
+app.listen(8000, () => console.log("listening on :8000"));
+</code></pre>
+                    </td>
+                    <td>Fast API
+                        <pre>`uv add fastapi`
+`uv add uvicorn`
+Auto-generated interactive docs are served at `/docs` once the app is running
+# Run:  uvicorn main:app --reload (serves on http://localhost:8000)
+# stop the uvicorn server : ctrl + c
+<code>from fastapi import FastAPI, HTTPException
+
+app = FastAPI()
+
+# Using a local list instead of a database for the demo:
+books = [
+    {"id": 1, "title": "Dune", "author": "Herbert", "year": 1965},
+    {"id": 2, "title": "1984", "author": "Orwell", "year": 1949},
+]
+</code></pre># --- Basic endpoint (decorator = @app.<method>(path)) ---<pre>test with http://localhost:8000/
+<code>@app.get("/")
+def handler():
+    return {"message": "success"}
+</code></pre># --- Path parameter ---<pre>
+# The magic of FastAPI: path params, query params, and JSON bodies ALL arrive
+# as plain arguments to the handler. Just type-annotate them
+# test with http://localhost:8000/books/2
+<code>@app.get("/books/{id}")
+def get_book(id: int):  # `id: int` -> FastAPI parses/validates it
+    for book in books:
+        if book["id"] == id:
+            return book
+    raise HTTPException(status_code=404, detail="book not found")
+</code></pre># --- Query parameter (optional -> give it a default of None) ---
+<pre>test with http://localhost:8000/books?id=2 
+test with http://localhost:8000/books 
+<code>@app.get("/books")
+def list_books(id: int | None = None):
+    if id is None:
+        return books
+    return next((b for b in books if b["id"] == id), None)
+</code></pre># --- POST with a JSON body (type it and it's parsed for you) ---<pre><code>@app.post("/books")
+def create_book(book: dict):
+    books.append(book)
+    return book
+</code></pre># --- Middleware: one decorator makes it universal (applies to ALL endpoints) ---<pre><code>@app.middleware("http")
+async def log_requests(request, call_next):
+    print(request.method)
+    response = await call_next(request)    # call_next is async -> always await it
+    return response
+</code></pre>
+                    </td>
+                </tr>
+                
+
+            </tbody>
+        </table>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
