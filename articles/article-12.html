@@ -108,7 +108,7 @@ books = [
     {"id": 1, "title": "Dune", "author": "Herbert", "year": 1965},
     {"id": 2, "title": "1984", "author": "Orwell", "year": 1949},
 ]
-</code></pre># --- Basic endpoint (decorator = @app.<method>(path)) ---<pre>test with http://localhost:8000/
+</code></pre># --- Basic endpoint (decorator = @app.get(path)) ---<pre>test with http://localhost:8000/
 <code>@app.get("/")
 def handler():
     return {"message": "success"}
