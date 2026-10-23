@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N8N</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>n8n</h1>
+
+
+        <p> n8n is a workflow automation tool that allows you to automate tasks and processes by creating workflows
+            that connect different applications and services. It is an open-source tool that can be self-hosted or used in the cloud. </p>
+            <p> because I I wasn't and still I'm not entirely sure about the level of commitment I'm going to have for the technology and I'm still in the process of exploring I personally chose not to commit with the monthly subscription plan even though there is a free trial period.</p>
+            <p> I chose to implement the Docker setup. I have been wanting to experiment with Docker for a while.</p>
+            <p> The setup is the following: you need to download Docker, installed it. Because I didn't want to take a chance with missing my PATH I also chose to temporarily add the docker-path to the current terminal session.</p>
+
+                 <h2>local installation with Docker</h2>
+      <ul>
+        <li># Download and install Docker Desktop from the official website.</li>
+        <li># Open Docker Desktop </li>
+        <li># 1 Check that Docker is running and that the Docker daemon is active.</li>
+        <li>add the path globally or temporarily add the docker-path to the current terminal session</li>
+        <li># docker --version</li>
+         <li># docker ps</li>
+         <li># 2 Create persistent storage</li>
+         <li># docker volume create n8n_data => you should see 'n8n_data'</li>
+         <li># 3 Create and start your n8n container</li>
+         <li><pre><code>// download  create and start 
+  docker run -d \
+  --name n8n \
+  --restart unless-stopped \
+  -p 127.0.0.1:5678:5678 \
+  -e TZ=Europe/Paris \
+  -e GENERIC_TIMEZONE=Europe/Paris \
+  -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+  -e N8N_RUNNERS_ENABLED=true \
+  -v n8n_data:/home/node/.n8n \
+  docker.n8n.io/n8nio/n8n</code></pre></li>
+  <li> # 4check the container is running with <pre><code>docker ps</code></pre></li>
+  <li> # 5 Access the web interface with <pre><code>http://localhost:5678</code></pre> in your browser.</li>
+      </ul>
+
+      <h2>Usage once the first set up is done</h2>
+  <ul>
+    <li># Start Docker Desktop first</li> 
+
+<li>Open <pre><code>http://localhost:5678</code></pre> in your browser.</li>
+  </ul>
+
+
+  <p>
+    I choose never to stop the container because I want to be able to stop it or start it just by opening the Docker application. Whenever I want to work locally on n8n I just open Docker and all my workflows are available.
+  </p>
+
+  <h2>Courses</h2>
+  <p>I have finished the quickstart course on n8n. I really enjoyed the hands-on approach and the coverage of the platform's features. It is punctuated with quizzes that help you memorize the key concepts.</p>
+  <a href="https://learn.n8n.io/courses/course-v1:n8n+QS101+2026H2/about" target="_blank">Quickstart course provided by n8n</a>
+  </ul>
+  <p> There are two more courses in the same series that I started working on, one is about advanced features and the other is about integration with AI features.</p>
+
+  <h2>Webhooks</h2>
+
+<p>
+    Among the many benefits and uses of the vast array of nodes available with n8n, webhooks caught my attention. They are a way for applications to communicate with each other in real-time. They allow one application to send data to another application when a specific event occurs. In the context of n8n, webhooks can be used to trigger workflows based on events from external services or applications. For example, you can set up a webhook in n8n that listens for incoming HTTP requests and triggers a workflow whenever a request is received. This allows you to automate tasks and processes based on real-time events, making your workflows more dynamic and responsive.
+    I have a platform where users sign in using their Google account. When a user signs in for the first time a new account is created and the new user is stored on my MongoDB database. New users have a limited access to the functionalities to my platform. I want to review each profile before granting them full access. I have set up a webhook in n8n that listens for new user sign-ups and triggers a workflow that sends me an notifications with the user's details. This allows me to review the new user's profile and decide whether to grant them full access or not. 
+</p>
+<p>Locally I was able to set it up seamlessly using an SMTP node to send emails and a telegram node to send messages. It worked flawlessly.</p>
+<p>However when I tried to set it up on Railway I started encountering issues with the email node not functioning as expected. I was unable to establish a connection with gmail. Since this is a simple demo I opted to simplify and lower my ambitions and just sticked to the telegram node in production.
+
+</p>
+
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>

@@ -115,6 +115,16 @@ const articles = [
         img: "JS_Python_handshake.png",
         imgAlt: "JavaScript and Python Handshake"
     }
+    ,
+    {
+        title: "n8n",
+        description: "n8n with Docker",
+        date: "2026-10-22",
+        updatedate: null,
+        url: "articles/article-13.html",
+        img: "n8n-docker.png",
+        imgAlt: "n8n with Docker"
+    }
 ];
 
 const articleList = document.getElementById("article-list");
