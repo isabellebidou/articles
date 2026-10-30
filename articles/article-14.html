@@ -64,7 +64,10 @@
       use npm. I run the following command in my terminal:
       <code>npm install -g --ignore-scripts @earendil-works/pi-coding-agent</code>.
       Once you have installed pi, you need to write a json configuration file to specify the model you want to use and
-      its parameters. The configuration file should be in the following format:
+      its parameters. <code>~/.pi/agent/models.json</code> 
+      I used <code>mkdir -p ~/.pi/agent && nano ~/.pi/agent/models.json</code>  saved it with <code>Ctrl + O</code> and exited with <code>Ctrl + X</code>  opened it with TextEdit and pasted the following configuration file into it:
+      
+   
     <pre><code>{
   "providers": {
     // Custom name of the provider
