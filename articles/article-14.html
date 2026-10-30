@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-YKYCPDL3YL');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>local LLMs with LM Studio and Pi</title>
+  <link rel="stylesheet" href="./../css/style.css">
+  <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../articles.html">← Back to Articles</a>
+    </div>
+  </header>
+
+  <article class="container article-content">
+    <h1>local LLMs with LM Studio and Pi</h1>
+    <h2>LM Studio</h2>
+    <p>LM Studio is a local language model server that allows you to run and manage local language models on your own
+      machine. It provides a user-friendly interface for managing and interacting with language models, and it supports
+      a wide range of models and configurations. It is designed to be easy to use and provides a simple way to run local
+      language models without the need for complex setup or configuration.</p>
+    <h2>Pi</h2>
+    <p>Pi is a command-line interface for interacting with local language model servers. It allows you to perform
+      various tasks such as starting, stopping, and managing language models.
+      Once you start a local language model server with LM Studio you can use Pi to interact with the server and perform
+      tasks such as creatting files in a project and writing code direclty. You just have to write your prompts into the
+      pi interface in your terminal and the model will generate the corresponding code or text based on your prompts.
+
+    </p>
+    <h2>LM Studio setup and models selection</h2>
+    <p> You need to install LM Studio, select and download a language model</p>
+    <p> You will have to find a model that suits your needs and that will fit on your machine</p>
+    <p> I personnaly recommend Kyle, from <a href="https://www.youtube.com/@WebDevSimplified">WebDevSimplified</a>'s
+      instructions at <a href="https://master.dev/courses/local-ai/">https://master.dev/courses/local-ai/</a> </p>
+    <p> I have been following his YoTube channel and his tutorials for quite some time and I found his video totorial on
+      local mocels quite promising, I signed up for Master.dev to gain access to the whole tutorial.</p>
+    <p> You will most certainly have to try a few models ftom within the LM Studio desktop interface, your hardware's
+      properties will determine the models you will have accces to. Memor capacity being one of the key factors to take
+      into consideration. I advise you to give a chance to the smaller models that might work perfectly for smaller
+      coding chunks. And also your greedy browser tabs jungle defenitely counts against your performance.</p>
+    <h2>Python setup</h2>
+
+    <p> Once the model is loaded and running on your machine, you can use it via VsCode or with pi to interact with it.
+    </p>
+    <h2>Pi setup</h2>
+
+    <p>
+      You will have to install pi first. You can do this in a different ways as explained at <a
+        href="https://pi.dev/docs/latest/quickstart">https://pi.dev/docs/latest/quickstart</a> , I personnaly chose to
+      use npm. I run the following command in my terminal:
+      <code>npm install -g --ignore-scripts @earendil-works/pi-coding-agent</code>.
+      Once you have installed pi, you need to write a json configuration file to specify the model you want to use and
+      its parameters. The configuration file should be in the following format:
+    <pre><code>{
+  "providers": {
+    // Custom name of the provider
+    "lmstudio": {
+      "baseUrl": "http://127.0.0.1:1234/v1", // Your LM Studio server URL (with /v1) appended
+      "api": "openai-completions", // Use either openai-completions or openai-responses
+      "apiKey": "key", // Your api key or any non-empty string if auth is disabled
+      "models": [
+        {
+          "id": "your-loaded-model-id", // Model ID (the only required field in the model configuration)
+          "name": "Local Coding Model",// some readable name for the model (optional)
+          "contextWindow": XXXXXXX, // Total context size
+          "maxTokens": XXXXX, // Max output tokens
+          "reasoning": true, 
+          "input": ["text", "image"], 
+        }
+      ]
+    }
+  }
+}<code></pre>
+
+
+
+    </p>
+
+    <p>
+      Before you start pi, make sure you are in your project directory.
+      Just type <code>pi</code> in your terminal and you will be able to start interacting with the model. You can also
+      use the <code>pi --continue</code> command to resume your last active session in this workspace.
+    </p>
+    <h2>Pi commands for local language model servers</h2>
+    <table border="1" cellpadding="8"
+      style="border-collapse: collapse; font-family: sans-serif; width: 100%; max-width: 800px;">
+      <thead>
+        <tr style="background-color: #f2f2f2; text-align: left;">
+          <th style="width: 25%;">Action / Context</th>
+          <th style="width: 35%;">Shortcut / Command</th>
+          <th style="width: 40%;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- START / SESSION MANAGEMENT -->
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td rowspan="3" style="font-weight: bold; background-color: #fafafa; vertical-align: top;">🚀 Session Control
+          </td>
+          <td><code>pi</code></td>
+          <td>Starts a fresh agent session in the current project directory.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><code>pi --continue</code></td>
+          <td>Resumes your last active session in this workspace.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><code>/new</code></td>
+          <td>Wipes the conversation history mid-session to start a completely fresh prompt thread.</td>
+        </tr>
+
+        <!-- STOP / BREAK MANAGEMENT -->
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td rowspan="2" style="font-weight: bold; background-color: #fafafa; vertical-align: top;">🛑 Stop &amp; Exit
+          </td>
+          <td><kbd>Escape</kbd></td>
+          <td>Instantly stops/aborts a running model generation or a long-running bash tool execution.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><code>/quit</code> <span style="color:#666;">or</span> <kbd>Ctrl</kbd> + <kbd>C</kbd> (x2)</td>
+          <td>Gracefully closes the Pi CLI and returns you to your standard terminal profile.</td>
+        </tr>
+
+        <!-- MODEL MANAGEMENT -->
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td rowspan="3" style="font-weight: bold; background-color: #fafafa; vertical-align: top;">🤖 Model Control
+          </td>
+          <td><code>/model</code> <span style="color:#666;">or</span> <kbd>Ctrl</kbd> + <kbd>L</kbd></td>
+          <td>Opens the model manager interactive menu to browse and pick available local or cloud providers.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><kbd>Ctrl</kbd> + <kbd>S</kbd> <span style="color:#666;">(inside menu)</span></td>
+          <td>Locks the currently highlighted model as your permanent default startup model.</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><kbd>Ctrl</kbd> + <kbd>P</kbd></td>
+          <td>Instantly quick-cycles through your favorite pinned ("scoped") models mid-chat.</td>
+        </tr>
+
+        <!-- EXTRA DEV TRICKS -->
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td rowspan="2" style="font-weight: bold; background-color: #fafafa; vertical-align: top;">⚡ Everyday Tips
+          </td>
+          <td><kbd>Shift</kbd> + <kbd>Tab</kbd></td>
+          <td>Cycles through model reasoning/thinking intensity levels (e.g., minimal, low, medium, high).</td>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd;">
+          <td><code>pi --list-models [provider]</code></td>
+          <td>Runs diagnostics directly outside the app to check configuration parsing (e.g., <code>lmstudio</code>).
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </article>
+  <footer>
+    <span>Isabelle Bidou - copyright
+      <script>document.write(new Date().getFullYear())</script>
+    </span>
+  </footer>
+
+</body>
+
+</html>

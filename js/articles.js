@@ -124,6 +124,15 @@ const articles = [
         url: "articles/article-13.html",
         img: "n8n-docker.png",
         imgAlt: "n8n with Docker"
+    },
+    {
+        title: "LM Studio and Pi",
+        description: "Local LLMs with LM Studio and Pi",
+        date: "2026-10-30",
+        updatedate: null,
+        url: "articles/article-14.html",
+        img: "Pi_and_LM_Studio_Handshake.png",
+        imgAlt: "LM Studio and Pi"
     }
 ];
 
