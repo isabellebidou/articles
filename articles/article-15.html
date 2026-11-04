@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKYCPDL3YL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YKYCPDL3YL');
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LM studio settings for Qwen3.8 27B and GPT-OSS-20B</title>
+    <link rel="stylesheet" href="./../css/style.css">
+    <script src="./../js/behaviour.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="container">
+            <a href="../articles.html">← Back to Articles</a>
+        </div>
+    </header>
+
+    <article class="container article-content">
+        <h1>LM studio settings for Qwen3.8 27B and GPT-OSS-20B</h1>
+
+        <p>Here are the settings I have used for my MacBook Pro M1 Pro, 32 GB unified memory, in LM studio. The settings include GPU offload, CPU thread pool, and memory management
+            strategies. These configurations are crucial for optimizing the performance of the model in LM studio.</p>
+        <p>Context length is a critical parameter for both models, determining the maximum input length the model can
+            process, but other parameters such as the number of threads and the batch size also play a role in
+            optimizing performance.</p>
+            <h2>Batch Size Settings</h2>
+        <p>Evaluation Batch Size and Physical Batch Size are important parameters for managing the computational load
+            during inference.</p>
+            <h3>Evaluation Batch Size or Logical batch</h3>
+        <p>Evaluation Batch Size controls how many tokens the model processes together during prompt evaluation.
+            This setting can be adjusted to optimize the performance of the model during prompt evaluation.</p>
+        <p>Pi sends LM Studio a prompt containing 4,000 tokens.
+
+            Instead of processing each token individually, the model processes tokens in batches.
+
+            With an evaluation batch size of 512, LM Studio can evaluate up to 512 tokens together in a batch.</p>
+        <ul>
+            <li>Larger batch = potentially faster prompt processing</li>
+            <li>Larger batch = more temporary memory required.</li>
+            <li>Smaller batch = less memory pressure, potentially slower prompt processing.</li>
+        </ul>
+        <h3>Physical Batch Size or Physical computation batch</h3>
+        <p>Physical Batch Size controls how the logical batch is divided into smaller computation chunks</p>
+        <ul>
+            <li>Smaller physical batches reduce peak temporary memory requirements.</li>
+            <li>Larger physical batches can improve throughput.</li>
+            <li>Too small can slow down prompt evaluation.</li>
+
+        </ul>
+        <img src="../batch.png" alt="LM Studio Batch Size Settings" class="illustration"> 
+        <p>Context length and batch size solve different problems. Context length determines how much information the model can retain; batch size determines how it processes information. Increasing context doesn't automatically require increasing evaluation batch size.</p>
+        
+        <p>I was able to test both models vibe coding a simple website. I use them in turn, so far the model that felt more comfortable using seems to be the OSS one Micou's it is much lighter and I'm still testing to find the best configuration. The issue with Qwen3.8 27B is that it requires more memory and processing power. Memory pressure was an issue and as I was monitoring in Activity Monitor, and  the smallest request was turning the indicators to amber and triggering the fans</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>LM Studio Setting</th>
+                    <th>Qwen3.8 27B</th>
+                    <th>GPT-OSS-20B</th>
+                    <th>Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GPU Offload</td>
+                    <td>65</td>
+                    <td>Maximum / Auto</td>
+                    <td>Number of model layers offloaded to the GPU. More GPU offload generally reduces CPU computation
+                        but uses unified memory.</td>
+                </tr>
+                <tr>
+                    <td>CPU Thread Pool</td>
+                    <td>8</td>
+                    <td>8</td>
+                    <td>Number of CPU threads available for inference.</td>
+                </tr>
+                <tr>
+                    <td>Evaluation Batch Size</td>
+                    <td>512</td>
+                    <td>512</td>
+                    <td>Maximum number of tokens processed together during prompt evaluation. Larger batches can improve
+                        prompt processing speed but require more temporary memory.</td>
+                </tr>
+                <tr>
+                    <td>Physical Batch Size</td>
+                    <td>128</td>
+                    <td>128</td>
+                    <td>Divides the evaluation workload into smaller computation chunks. Smaller chunks reduce peak
+                        memory requirements but may slow processing.</td>
+                </tr>
+                <tr>
+                    <td>Max Concurrent Predictions</td>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Maximum number of simultaneous generation requests. One avoids competing inference workloads.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Unified KV Cache</td>
+                    <td>ON</td>
+                    <td>ON</td>
+                    <td>Allows KV cache allocation to be shared across sequences.</td>
+                </tr>
+                <tr>
+                    <td>Context Checkpoints</td>
+                    <td>4</td>
+                    <td>4</td>
+                    <td>Number of saved intermediate context states for reuse during prompt processing.</td>
+                </tr>
+                <tr>
+                    <td>Offload KV Cache to GPU</td>
+                    <td>ON</td>
+                    <td>ON</td>
+                    <td>Places KV cache in GPU-accessible memory to accelerate attention computation.</td>
+                </tr>
+                <tr>
+                    <td>Keep Model in Memory</td>
+                    <td>OFF</td>
+                    <td>OFF</td>
+                    <td>Allows model resources to be released when the model is unloaded.</td>
+                </tr>
+                <tr>
+                    <td>Try mmap()</td>
+                    <td>ON</td>
+                    <td>ON</td>
+                    <td>Maps model files into memory instead of explicitly copying the entire model into RAM.</td>
+                </tr>
+                <tr>
+                    <td>Flash Attention</td>
+                    <td>ON</td>
+                    <td>ON</td>
+                    <td>Uses a more memory-efficient attention implementation, particularly useful with longer contexts.
+                    </td>
+                </tr>
+                <tr>
+                    <td>K Cache Quantization</td>
+                    <td>Q4_0</td>
+                    <td>Auto / Default</td>
+                    <td>Reduces memory consumption for key vectors in the KV cache.</td>
+                </tr>
+                <tr>
+                    <td>V Cache Quantization</td>
+                    <td>Q4_0</td>
+                    <td>Auto / Default</td>
+                    <td>Reduces memory consumption for value vectors in the KV cache.</td>
+                </tr>
+                <tr>
+                    <td>Speculative Decoding</td>
+                    <td>OFF</td>
+                    <td>OFF</td>
+                    <td>Uses draft predictions to potentially accelerate token generation, with additional resource
+                        requirements.</td>
+                </tr>
+                <tr>
+                    <td>Context Length</td>
+                    <td>8,192</td>
+                    <td>24,576</td>
+                    <td>Maximum input context available to the model. Larger contexts require more KV cache memory.</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer>
+        <span>Isabelle Bidou - copyright
+            <script>document.write(new Date().getFullYear())</script>
+        </span>
+    </footer>
+
+</body>
+
+</html>
