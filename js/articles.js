@@ -133,10 +133,20 @@ const articles = [
         url: "articles/article-14.html",
         img: "Pi_and_LM_Studio_Handshake.png",
         imgAlt: "LM Studio and Pi"
+    },
+    {
+        title: "Qwen3.8 27B and GPT-OSS-20B",
+        description: "a recap of LM studio settings I used",
+        date: "2026-11-04",
+        updatedate: null,
+        url: "articles/article-15.html",
+        img: "Overheated_macbook.png",
+        imgAlt: "Overheated MacBook"
     }
 ];
 
-const articleList = document.getElementById("article-list");
+//const articleList = document.getElementById("article-list");
+const articleList = document.querySelector('#article-list');
 
 articles.forEach(article => {
     const card = document.createElement("div");

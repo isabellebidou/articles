@@ -25,7 +25,12 @@ code {
     max-height: 70px;
     height: auto;
 }
-
+.illustration{
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    height: auto;
+}
 code:hover {
     background: #e6e7e4;
 }
