@@ -141,7 +141,7 @@ const articles = [
         updatedate: null,
         url: "articles/article-15.html",
         img: "Overheated_macbook.png",
-        imgAlt: "Overheated MacBook"
+        imgAlt: "overheated_macbook"
     }
 ];
 
