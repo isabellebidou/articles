@@ -140,7 +140,7 @@ const articles = [
         date: "2026-11-04",
         updatedate: null,
         url: "articles/article-15.html",
-        img: "Overheated_macbook.png",
+        img: "overheated_macbook.png",
         imgAlt: "overheated_macbook"
     }
 ];
